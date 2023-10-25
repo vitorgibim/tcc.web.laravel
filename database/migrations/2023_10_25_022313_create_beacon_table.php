@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('UUID', 50);
             $table->integer('range');
             $table->string('description', 50);
+            $table->foreignId('beacon_id')->constrained(); 
+
             $table->timestamps();
         });
     }
