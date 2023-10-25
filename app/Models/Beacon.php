@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Beacon extends Model
 {
     use HasFactory;
+    protected $table = 'beacons';
+    protected $fillable = ['UUID', 'range', 'description'];
+
 }
