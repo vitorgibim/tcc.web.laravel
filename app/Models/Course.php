@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $table = 'courses';
-
+    protected $fillable = ['name', 'description'];
     public function schoolSubjects() {
         return $this->belongsToMany(SchoolSubject::class);//, 'school_subject_id');
     }
