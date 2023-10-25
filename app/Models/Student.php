@@ -14,4 +14,8 @@ class Student extends Model
     {
         return $this->belongsTo(City::class);//, 'id');
     }
+
+    public function schoolCalls() {
+        return $this->belongsToMany(SchoolCall::class);
+        }
 }
