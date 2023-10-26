@@ -12,6 +12,6 @@ class City extends Model
     // protected $fillable = ['id_crm', 'usuario_rbx', 'nome_crm'];
     public function student()
     {
-        return $this->hasMany(Student::class, 'city_id');
+        return $this->hasMany(Student::class);//, 'city_id');
     }
 }
