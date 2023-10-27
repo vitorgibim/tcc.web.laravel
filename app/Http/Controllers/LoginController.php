@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function index(Request $request){
@@ -37,10 +37,11 @@ class LoginController extends Controller
 
         $email = $request->get('usuario');
         $password = $request->get('senha');
-        $user = new User();
-        $usuario = $user->where('email', $email)->where('password', $password)->get()->first();
 
-        if(isset($usuario->name)){
+        $user = new User();
+
+        $usuario = $user->where('email', $email)->first();
+        if(isset($usuario) && Hash::check($password, $usuario->password)){
             session_start();
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
@@ -49,6 +50,7 @@ class LoginController extends Controller
         }else{
             return redirect()->route('site.login', ['erro' => 1]);
         }
+
 
     }
 
