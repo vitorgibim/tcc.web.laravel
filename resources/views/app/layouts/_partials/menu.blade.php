@@ -71,8 +71,8 @@
                         <span class="nav_name">Beacons</span> 
                     </a>
                     <div class="dropdown-container">
-                    <li><a class="nav_link link-drop" href="{{ route('app.teacher.add')}}">Cadastrar</a></li>
-                        <li><a class="nav_link link-drop" href="{{ route('app.teacher.list')}}">Listar</a></li>
+                    <li><a class="nav_link link-drop" href="{{ route('app.beacon.add')}}">Cadastrar</a></li>
+                        <li><a class="nav_link link-drop" href="{{ route('app.beacon.list')}}">Listar</a></li>
                     </div>
 
                     <a href="" class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">
