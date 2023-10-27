@@ -11,7 +11,7 @@
     
 @section('conteudo')
 <div style="width: 95%; margin-left: 2%; margin-top: 7%; margin-right: 2%">
-    <form class="row g-3" action="{{ route('app..update')}}" method="POST">
+    <form class="row g-3" action="{{ route('app.teacher.update')}}" method="POST">
       @csrf
       @method('PUT')
       <div class="col-md-2 input-box">

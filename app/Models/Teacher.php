@@ -14,6 +14,9 @@ class Teacher extends Model
         return $this->belongsToMany(Course::class);
     }   
     public function schoolCalls() {
-        return $this->hasMany(SchoolCall::class);
-        }
+        return $this->belongsToMany(SchoolCall::class, 'id', 'teacher_id'); // verificar
+    }
+    public function city() {
+        return $this->hasMany(City::class, 'id', 'city_id');
+    }
 }

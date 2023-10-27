@@ -20,6 +20,7 @@
                 <th width="7%">Email</th>
                 <th width="20%">Endereço</th>
                 <th width="7%">Cidade</th>
+                {{-- <th width="7%">Curso</th> --}}
                 <th width="7%"></th>
                 <th width="7%"></th>
             </tr>
@@ -34,7 +35,11 @@
                         <td>{{ $teacher->cpf }}</td>
                         <td>{{ $teacher->email }}</td>
                         <td>{{ $teacher->address." - nº ". $teacher->address_number." - ". $teacher->neighborhood}}</td>
-                        <td>{{ $cities[$key]->description }}</td>
+                        <td>{{ $teacher->city[0]->description }}</td>
+                        {{-- @foreach ($teacher->courses as $course)
+                            <td>{{ $course->description }}</td>
+                         @endforeach --}}
+
                         <td><a href="{{ route('app.teacher.edit', [ 'id' => $teacher['id'] ]) }}">Editar</a></td>
                         <td><a href="{{ route('app.teacher.delete', [ 'id' => $teacher['id'] ]) }}">Deletar</a></td>
                         

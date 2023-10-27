@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function list(Request $request){
-        $teachers = Teacher::paginate(15);
+        // $teachers = Teacher::paginate(15);
 
-        foreach ($teachers as $key => $teacher) {
-            $cities[$key] = City::where("id", $teachers[$key]->city_id)->first();
-        }
+        $teachers = Teacher::with('city','courses')->paginate(15);
+        // dd($clients);
+        // foreach ($teachers as $key => $teacher) {
+        //     $cities[$key] = City::where("id", $teachers[$key]->city_id)->first();
+        // }
 
-        return view('app.teacher.list', ['teachers' => $teachers, 'cities' => $cities]);
+        return view('app.teacher.list', ['teachers' => $teachers]);
     }
 
     public function edit($id){
