@@ -10,5 +10,7 @@ class Beacon extends Model
     use HasFactory;
     protected $table = 'beacons';
     protected $fillable = ['UUID', 'range', 'description'];
-
+    public function teacher(){
+        return $this->belongsTo(Teacher::class);
+    }   
 }

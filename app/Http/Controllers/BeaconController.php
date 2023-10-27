@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class BeaconController extends Controller
 {
     public function list(Request $request){
-        $beacons = Beacon::paginate(15);
+        $beacons = Beacon::with('teacher')->paginate(15);
         // $beacons = Beacon::with('city','courses')->paginate(15);
 
         return view('app.beacon.list', ['beacons' => $beacons]);

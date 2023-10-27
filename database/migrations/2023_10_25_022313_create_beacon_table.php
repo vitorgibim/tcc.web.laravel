@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('beacons', function (Blueprint $table) {
             $table->id();
             $table->string('UUID', 50);
-            $table->integer('range');
-            $table->string('description', 50);
-            // $table->foreignId('beacon_id')->constrained(); 
+            $table->string('description', 50)->nullable();
+            $table->foreignId('teacher_id')->constrained(); 
 
             $table->timestamps();
         });

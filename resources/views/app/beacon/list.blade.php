@@ -15,8 +15,9 @@
         <thead>
             <tr>
                 <th width="7%">ID</th>
-                <th width="40%">UUID</th>
-                <th width="10%">Descrição</th>
+                <th width="20%">UUID</th>
+                <th width="7%">Descrição</th>
+                <th width="10%">Professor</th>
                 <th width="7%"></th>
                 <th width="7%"></th>
             </tr>
@@ -28,12 +29,8 @@
                     <tr>
                         <td>{{ $beacon->id }}</td>
                         <td>{{ $beacon->UUID }}</td>
-                        <td>{{ $beacon->description }}</td>
-                        {{-- <td>{{ $beacon->city[0]->description }}</td> --}}
-                        {{-- @foreach ($beacon->courses as $course)
-                            <td>{{ $course->description }}</td>
-                         @endforeach --}}
-
+                        <td>{{ $beacon->description ? $beacon->description: '-' }}</td>
+                        <td>{{ $beacon->teacher->name }}</td>
                         <td><a href="{{ route('app.beacon.edit', [ 'id' => $beacon['id'] ]) }}">Editar</a></td>
                         <td><a href="{{ route('app.beacon.delete', [ 'id' => $beacon['id'] ]) }}">Deletar</a></td>
                         
