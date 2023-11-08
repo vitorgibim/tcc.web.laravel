@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('UUID', 50);
             $table->string('description', 50)->nullable();
-            $table->foreignId('teacher_id')->constrained(); 
+            $table->foreignId('teacher_id')->constrained()->onDelete('cascade'); 
 
             $table->timestamps();
         });
