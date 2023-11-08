@@ -62,8 +62,8 @@
                         <span class="nav_name">Cursos</span> 
                     </a>
                     <div class="dropdown-container">
-                    <li><a class="nav_link link-drop" href="{{ route('app.teacher.add')}}">Cadastrar</a></li>
-                        <li><a class="nav_link link-drop" href="{{ route('app.teacher.list')}}">Listar</a></li>
+                    <li><a class="nav_link link-drop" href="{{ route('app.course.add')}}">Cadastrar</a></li>
+                        <li><a class="nav_link link-drop" href="{{ route('app.course.list')}}">Listar</a></li>
                     </div>
 
                     <a class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">

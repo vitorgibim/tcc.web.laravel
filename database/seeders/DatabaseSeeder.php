@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
         UsersSeeder::class,
         CitiesSeeder::class,
         CoursesSeeder::class,
+
+
         TeachersSeeder::class,
+        BeaconsSeeder::class,
         StudentsSeeder::class,
         ]);
     }

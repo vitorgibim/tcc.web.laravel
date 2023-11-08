@@ -45,17 +45,21 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
         return view('app.teacher.add');
     });
 
-    //Teachers
+    //Beacons
     Route::get('/beacon/list', [\App\Http\Controllers\BeaconController::class, 'list'])->name('app.beacon.list');
     Route::get('/beacon/edit/{id}', [\App\Http\Controllers\BeaconController::class, 'edit'])->name('app.beacon.edit');
     Route::put('/beacon/update', [\App\Http\Controllers\BeaconController::class, 'update'])->name('app.beacon.update');
     Route::get('/beacon/delete/{id}', [\App\Http\Controllers\BeaconController::class, 'delete'])->name('app.beacon.delete');
     Route::post('/beacon/add', [\App\Http\Controllers\BeaconController::class, 'add'])->name('app.beacon.add');
     Route::get('/beacon/add', [\App\Http\Controllers\BeaconController::class, 'addForm'])->name('app.beacon.add');
-    // Route::get('/beacon/add', function () {
 
-    // });
-
+    //Beacons
+    Route::get('/course/list', [\App\Http\Controllers\CourseController::class, 'list'])->name('app.course.list');
+    Route::get('/course/edit/{id}', [\App\Http\Controllers\CourseController::class, 'edit'])->name('app.course.edit');
+    Route::put('/course/update', [\App\Http\Controllers\CourseController::class, 'update'])->name('app.course.update');
+    Route::get('/course/delete/{id}', [\App\Http\Controllers\CourseController::class, 'delete'])->name('app.course.delete');
+    Route::post('/course/add', [\App\Http\Controllers\CourseController::class, 'add'])->name('app.course.add');
+    Route::get('/course/add', [\App\Http\Controllers\CourseController::class, 'addForm'])->name('app.course.add');
 });
 
 Route::fallback(function() {
