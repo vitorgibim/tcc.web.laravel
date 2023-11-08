@@ -51,9 +51,10 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
     Route::put('/beacon/update', [\App\Http\Controllers\BeaconController::class, 'update'])->name('app.beacon.update');
     Route::get('/beacon/delete/{id}', [\App\Http\Controllers\BeaconController::class, 'delete'])->name('app.beacon.delete');
     Route::post('/beacon/add', [\App\Http\Controllers\BeaconController::class, 'add'])->name('app.beacon.add');
-    Route::get('/beacon/add', function () {
-        return view('app.beacon.add');
-    });
+    Route::get('/beacon/add', [\App\Http\Controllers\BeaconController::class, 'addForm'])->name('app.beacon.add');
+    // Route::get('/beacon/add', function () {
+
+    // });
 
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Beacon;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class BeaconController extends Controller
@@ -14,13 +15,17 @@ class BeaconController extends Controller
     }
 
     public function edit($id){
-        $beacon = Beacon::find($id);
-        return view('app.beacon.edit', ['beacon' => $beacon]);
+        $teachers = Teacher::all();
+        $beacon = Beacon::with('teacher')->where('id', $id)->first();
+        // $beacon = Beacon::find($id)->with('teacher');
+        // dd($beacon);
+        return view('app.beacon.edit', compact('beacon', 'teachers'));
     }
 
     public function update(Request $request){
         $attributes = $request->all();
         $beacon = Beacon::find($attributes['id']);
+        $beacon->teacher_id = $request->teacher_id; // Ver se tem como tirar
         $beacon->update($attributes);
         return redirect()->route('app.beacon.list');
     }
@@ -36,20 +41,22 @@ class BeaconController extends Controller
 
     public function add(Request $request)
     {
-
+        
         $beacon = new Beacon;
 
-        $beacon->name = $request->name;
-        $beacon->cpf = $request->cpf;
-        $beacon->email = $request->email;
-        $beacon->address = $request->address;
-        $beacon->address_number = $request->address_number;
-        $beacon->neighborhood = $request->neighborhood;
-        $beacon->city_id = $request->city_id;
+        $beacon->UUID = $request->UUID;
+        $beacon->description = $request->description;
+        $beacon->teacher_id = $request->teacher_id;
         $beacon->save();
 
         return redirect()->route('app.beacon.list');
 
         // return redirect('/client/search')->with('msg-success', 'Cliente cadastrado com sucesso!');;
     }
-}
+
+    public function addForm()
+    {
+        $teachers = Teacher::all();
+        return view('app.beacon.add', compact('teachers'));
+    }
+    }
