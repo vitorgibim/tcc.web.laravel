@@ -12,10 +12,10 @@ class Student extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class);//, 'id');
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     public function schoolCalls() {
-        return $this->belongsToMany(SchoolCall::class);
+        return $this->belongsToMany(SchoolCall::class, 'student_school_call','student_id', 'school_call_id');
         }
 }

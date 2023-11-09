@@ -11,18 +11,19 @@ class Course extends Model
     protected $table = 'courses';
     protected $fillable = ['name', 'description'];
     public function schoolSubjects() {
-        return $this->belongsToMany(SchoolSubject::class);//, 'school_subject_id');
+        return $this->belongsToMany(SchoolSubject::class, 'course_school_subject', 'course_id', 'school_subject_id');
     }
 
-    public function clasrooms() {
-        return $this->belongsToMany(Classroom::class);
+    public function classrooms()
+    {
+      return $this->belongsToMany(Classroom::class, 'course_classroom', 'course_id', 'classroom_id');
     }
 
     public function teachers() {
-        return $this->belongsToMany(Teacher::class);
+        return $this->belongsToMany(Teacher::class, 'course_teacher', 'course_id', 'teacher_id');
     }
 
     public function students() {
-        return $this->belongsToMany(Student::class);
+        return $this->belongsToMany(Student::class, 'course_student', 'course_id', 'student_id');
     }
 }

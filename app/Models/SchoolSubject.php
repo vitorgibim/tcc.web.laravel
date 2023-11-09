@@ -13,6 +13,6 @@ class SchoolSubject extends Model
 
 
     public function courses() {
-        return $this->belongsToMany(Course::class);//, 'course_id');
+        return $this->belongsToMany(Course::class, 'course_school_subject', 'school_subject_id', 'course_id');
       }
 }
