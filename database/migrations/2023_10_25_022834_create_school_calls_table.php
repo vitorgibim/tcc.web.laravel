@@ -14,15 +14,10 @@ return new class extends Migration
         Schema::create('school_calls', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('class_id')
-                  ->constrained()
-                  ->onDelete('cascade');
-            $table->foreignId('school_subject_id')  
-                  ->constrained()
-                  ->onDelete('cascade');    
-            $table->foreignId('teacher_id')
-                  ->constrained()
-                  ->onDelete('cascade');
+            // $table->foreignId('class_id')->constrained()->onDelete('cascade');
+            $table->foreignId('school_subject_id')->constrained()->onDelete('cascade');    
+            $table->foreignId('teacher_id')->constrained()->onDelete('cascade');
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['pending', 'finished']);
             $table->timestamps();
         });
