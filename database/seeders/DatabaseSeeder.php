@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         BeaconsSeeder::class,
         StudentsSeeder::class,
         ClassroomsSeeder::class,
+        SchoolSubjectsSeeder::class,
         ]);
     }
 }
