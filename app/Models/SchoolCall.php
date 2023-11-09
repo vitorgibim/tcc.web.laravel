@@ -10,12 +10,16 @@ class SchoolCall extends Model
     use HasFactory;
     protected $table = 'school_calls';
     protected $fillable = ['date', 'class_id', 'school_subject_id', 'teacher_id', 'status'];
-    public function teachers() {
+    public function teacher() {
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
         
     public function schoolSubject() {
         return $this->belongsTo(SchoolSubject::class, 'school_subject_id');
+    }
+
+    public function classroom() {
+        return $this->belongsTo(Classroom::class, 'classroom_id');
     }
 
     public function students() {

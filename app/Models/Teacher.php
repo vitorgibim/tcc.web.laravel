@@ -9,14 +9,18 @@ class Teacher extends Model
 {
     use HasFactory;
     protected $fillable = ['name','cpf','email','address','address_number','neighborhood','city_id'];
+    protected $table = 'teachers';
 
-    public function courses(){
-        return $this->belongsToMany(Course::class);
-    }   
     public function schoolCalls() {
-        return $this->belongsToMany(SchoolCall::class, 'id', 'teacher_id'); // verificar
+        return $this->hasMany(SchoolCall::class, 'teacher_id', 'id');
     }
     public function city() {
-        return $this->hasMany(City::class, 'id', 'city_id');
+        return $this->belongsTo(City::class, 'id', 'city_id');
+    }
+    public function beacon() {
+        return $this->hasOne(Beacon::class, 'teacher_id', 'id');
+    }
+    public function schoolSubjects() {
+        return $this->belongsToMany(SchoolSubject::class, 'teacher_school_subject', 'teacher_id', 'school_subject_id');
     }
 }
