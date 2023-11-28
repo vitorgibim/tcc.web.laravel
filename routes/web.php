@@ -31,9 +31,12 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
     Route::put('/students/update', [\App\Http\Controllers\StudentController::class, 'update'])->name('app.student.update');
     Route::get('/students/delete/{id}', [\App\Http\Controllers\StudentController::class, 'delete'])->name('app.student.delete');
     Route::post('/students/add', [\App\Http\Controllers\StudentController::class, 'add'])->name('app.student.add');
-    Route::get('/students/add', function () {
-        return view('app.student.add');
-    });
+    Route::get('/students/add', [\App\Http\Controllers\StudentController::class, 'addForm'])->name('app.student.add');
+    
+    
+    // Route::get('/students/add', function () {
+    //     return view('app.student.add');
+    // });
 
     //Teachers
     Route::get('/teachers/list', [\App\Http\Controllers\TeacherController::class, 'list'])->name('app.teacher.list');
@@ -41,9 +44,11 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
     Route::put('/teachers/update', [\App\Http\Controllers\TeacherController::class, 'update'])->name('app.teacher.update');
     Route::get('/teachers/delete/{id}', [\App\Http\Controllers\TeacherController::class, 'delete'])->name('app.teacher.delete');
     Route::post('/teachers/add', [\App\Http\Controllers\TeacherController::class, 'add'])->name('app.teacher.add');
-    Route::get('/teachers/add', function () {
-        return view('app.teacher.add');
-    });
+    Route::get('/teachers/add', [\App\Http\Controllers\TeacherController::class, 'addForm'])->name('app.teacher.add');
+    
+    // Route::get('/teachers/add', function () {
+    //     return view('app.teacher.add');
+    // });
 
     //Beacons
     Route::get('/beacon/list', [\App\Http\Controllers\BeaconController::class, 'list'])->name('app.beacon.list');
@@ -68,6 +73,22 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
     Route::get('/classroom/delete/{id}', [\App\Http\Controllers\ClassroomController::class, 'delete'])->name('app.classroom.delete');
     Route::post('/classroom/add', [\App\Http\Controllers\ClassroomController::class, 'add'])->name('app.classroom.add');
     Route::get('/classroom/add', [\App\Http\Controllers\ClassroomController::class, 'addForm'])->name('app.classroom.add');
+
+     //School_call
+     Route::get('/school_call/list', [\App\Http\Controllers\SchoolCallController::class, 'list'])->name('app.school_call.list');
+     Route::get('/school_call/edit/{id}', [\App\Http\Controllers\SchoolCallController::class, 'edit'])->name('app.school_call.edit');
+     Route::put('/school_call/update', [\App\Http\Controllers\SchoolCallController::class, 'update'])->name('app.school_call.update');
+     Route::get('/school_call/delete/{id}', [\App\Http\Controllers\SchoolCallController::class, 'delete'])->name('app.school_call.delete');
+     Route::post('/school_call/add', [\App\Http\Controllers\SchoolCallController::class, 'add'])->name('app.school_call.add');
+     Route::get('/school_call/add', [\App\Http\Controllers\SchoolCallController::class, 'addForm'])->name('app.school_call.add');
+
+    //School_call
+    Route::get('/school_subject/list', [\App\Http\Controllers\SchoolSubjectController::class, 'list'])->name('app.school_subject.list');
+    Route::get('/school_subject/edit/{id}', [\App\Http\Controllers\SchoolSubjectController::class, 'edit'])->name('app.school_subject.edit');
+    Route::put('/school_subject/update', [\App\Http\Controllers\SchoolSubjectController::class, 'update'])->name('app.school_subject.update');
+    Route::get('/school_subject/delete/{id}', [\App\Http\Controllers\SchoolSubjectController::class, 'delete'])->name('app.school_subject.delete');
+    Route::post('/school_subject/add', [\App\Http\Controllers\SchoolSubjectController::class, 'add'])->name('app.school_subject.add');
+    Route::get('/school_subject/add', [\App\Http\Controllers\SchoolSubjectController::class, 'addForm'])->name('app.school_subject.add');
 });
 
 Route::fallback(function() {

@@ -8,24 +8,26 @@ use Illuminate\Http\Request;
 class ClassroomController extends Controller
 {
     public function list(Request $request){
-        $classrooms = Classroom::with('teacher')->paginate(15);
+        $classrooms = Classroom::paginate(15);
+        // $classrooms = Classroom::with('teacher')->paginate(15);
         // $classrooms = Classroom::with('city','courses')->paginate(15);
-        dd($classrooms);
+        // dd($classrooms);
         return view('app.classroom.list', ['classrooms' => $classrooms]);
     }
 
     public function edit($id){
-        $teachers = Teacher::all();
-        $classroom = Classroom::with('teacher')->where('id', $id)->first();
+        // $t0eachers = Teacher::all();
+        $classroom = Classroom::find($id)->first();
+        // $classroom = Classroom::with('teacher')->where('id', $id)->first();
         // $classroom = Classroom::find($id)->with('teacher');
         // dd($classroom);
-        return view('app.classroom.edit', compact('classroom', 'teachers'));
+        return view('app.classroom.edit', compact('classroom'));
     }
 
     public function update(Request $request){
         $attributes = $request->all();
         $classroom = Classroom::find($attributes['id']);
-        $classroom->teacher_id = $request->teacher_id; // Ver se tem como tirar
+        // $classroom->teacher_id = $request->teacher_id; // Ver se tem como tirar
         $classroom->update($attributes);
         return redirect()->route('app.classroom.list');
     }
@@ -44,9 +46,8 @@ class ClassroomController extends Controller
         
         $classroom = new Classroom;
 
-        $classroom->UUID = $request->UUID;
+        $classroom->number = $request->number;
         $classroom->description = $request->description;
-        $classroom->teacher_id = $request->teacher_id;
         $classroom->save();
 
         return redirect()->route('app.classroom.list');
@@ -56,7 +57,8 @@ class ClassroomController extends Controller
 
     public function addForm()
     {
-        $teachers = Teacher::all();
-        return view('app.classroom.add', compact('teachers'));
+        // $teachers = Teacher::all();
+        // return view('app.classroom.add', compact('teachers'));
+        return view('app.classroom.add');
     }
 }

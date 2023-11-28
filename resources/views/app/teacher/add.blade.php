@@ -49,10 +49,21 @@
                         {{ $errors->has('neighborhood') ? $errors->first('neighborhood') : ''}}
                     </div>
                     
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <label for="validationCustom05"  class="form-label">Cidade</label>
                         <input type="text" name="city_id" value="{{ old('city_id') }}" class="form-control" id="validationCustom05">
-                    </div>
+                    </div> --}}
+
+
+                    <div class="col-md-6 mt-3">
+                        <label class="call_form">Selecione a Cidade</label>
+                        <select id="city" name="city_id" class="nice-select">
+                
+                            @foreach ($cities as $city)
+                                <option value={{ $city->id }}>{{ $city->description }}</option>
+                            @endforeach
+                        </select>
+                      </div>
 
                     <div class="container">
                         <div class="col-md-4 d-flex justify-content-center" style="margin-left: 32%">

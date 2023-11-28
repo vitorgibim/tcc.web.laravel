@@ -1,9 +1,9 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Cursos')
+@section('titulo', 'Disciplina')
 
 @php
-    $titulo = 'Listar Cursos';
+    $titulo = 'Listar Disciplina';
     //$classe_candidato = 'active';
     $link1 = ['nome' => 'Cadastrar', 'rota' => 'app..list'];
     $link2 = ['nome' => 'Procurar', 'rota' => 'app..list'];
@@ -16,21 +16,21 @@
             <tr>
                 <th width="7%">ID</th>
                 <th width="7%">Nome</th>
-                <th width="20%">Descrição</th>
+                <th width="20%">Carga Horária</th>
                 <th width="7%"></th>
                 <th width="7%"></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach ($courses as $key => $course)
+            @foreach ($school_subjects as $key => $school_subject)
                 <form method="POST" action="">
                     <tr>
-                        <td>{{ $course->id }}</td>
-                        <td>{{ $course->name }}</td>
-                        <td>{{ $course->description ? $course->description: '-' }}</td>
-                        <td><a href="{{ route('app.course.edit', [ 'id' => $course['id'] ]) }}">Editar</a></td>
-                        <td><a href="{{ route('app.course.delete', [ 'id' => $course['id'] ]) }}">Deletar</a></td>
+                        <td>{{ $school_subject->id }}</td>
+                        <td>{{ $school_subject->name }}</td>
+                        <td>{{ $school_subject->workload ? $school_subject->workload . 'h': '-' }}</td>
+                        <td><a href="{{ route('app.school_subject.edit', [ 'id' => $school_subject['id'] ]) }}">Editar</a></td>
+                        <td><a href="{{ route('app.school_subject.delete', [ 'id' => $school_subject['id'] ]) }}">Deletar</a></td>
                         
                         
                     </tr>
@@ -42,7 +42,7 @@
 
     <div class="row g-3 needs-validation justify-content-center">
         <span class="col-md-6 justify-content-center">
-        {{ $courses->links('pagination::bootstrap-4', [
+        {{ $school_subjects->links('pagination::bootstrap-4', [
   'size' => 'sm', 
   'show_prev_next' => true,
   'active' => 'primary',

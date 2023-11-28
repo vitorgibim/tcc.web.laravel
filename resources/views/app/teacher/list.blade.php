@@ -35,7 +35,7 @@
                         <td>{{ $teacher->cpf }}</td>
                         <td>{{ $teacher->email }}</td>
                         <td>{{ $teacher->address." - nº ". $teacher->address_number." - ". $teacher->neighborhood}}</td>
-                        <td>{{ $teacher->city[0]->description }}</td>
+                        <td>{{ $teacher->city->description }}</td>
                         {{-- @foreach ($teacher->courses as $course)
                             <td>{{ $course->description }}</td>
                          @endforeach --}}

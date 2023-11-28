@@ -43,9 +43,8 @@ class CourseController extends Controller
         
         $course = new Course;
 
-        $course->UUID = $request->UUID;
         $course->description = $request->description;
-        $course->teacher_id = $request->teacher_id;
+        $course->name = $request->name;
         $course->save();
 
         return redirect()->route('app.course.list');

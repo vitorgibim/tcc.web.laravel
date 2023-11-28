@@ -15,16 +15,16 @@
                 <form class="row g-3" method="post" action="{{route('app.classroom.add')}}" >
                     @csrf
                     <div class="col-md-12">
-                        <label for="validationCustom01"  class="form-label">UUID</label>
-                        <input type="text" name="UUID" value="{{ old('UUID') }}" class="form-control" id="validationCustom01" required>
-                        {{ $errors->has('UUID') ? $errors->first('UUID') : ''}}
+                        <label for="validationCustom01"  class="form-label">Number</label>
+                        <input type="text" name="number" value="{{ old('number') }}" class="form-control" id="validationCustom01" required>
+                        {{ $errors->has('number') ? $errors->first('number') : ''}}
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom05"  class="form-label">Descrição</label>
                         <input type="text" name="description" value="{{ old('description') }}" class="form-control " placeholder="Alguma observação"  id="validationCustom05">
                         {{ $errors->has('description') ? $errors->first('description') : ''}}
                     </div>
-
+{{-- 
                     <div class="col-md-6">
                         <label class="call_form">Selecione o Professor</label>
                         <select id="teacher" name="teacher_id" class="nice-select">
@@ -33,7 +33,7 @@
                                 <option value={{ $teacher->id }}>{{ $teacher->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
 
                     <div class="container">
                         <div class="col-md-4 d-flex justify-content-center" style="margin-left: 32%">

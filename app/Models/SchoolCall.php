@@ -23,6 +23,6 @@ class SchoolCall extends Model
     }
 
     public function students() {
-        return $this->belongsToMany(Student::class, 'student_school_call','student_id', 'school_call_id');
+        return $this->belongsToMany(Student::class, 'student_school_call', 'school_call_id', 'student_id');
     }
 }

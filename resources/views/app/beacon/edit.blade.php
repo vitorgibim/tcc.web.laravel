@@ -35,7 +35,7 @@
                 <option value={{ $teacher->id }}>{{ $teacher->name }}</option>
             @endforeach
         </select>
-    </div>
+      </div>
     
       <div class="col-12 mt-3 justify-content-center">
         <div class="col-md-6">

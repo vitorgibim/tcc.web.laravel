@@ -21,7 +21,7 @@
                 <th width="7%">Email</th>
                 <th width="20%">Endereço</th>
                 <th width="7%">Cidade</th>
-                <th width="7%">Curso</th>
+                {{-- <th width="7%">Curso</th> --}}
                 <th width="7%"></th>
                 <th width="7%"></th>
             </tr>
@@ -37,8 +37,9 @@
                         <td>{{ $student->cpf }}</td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->address." - nº ". $student->address_number." - ". $student->neighborhood}}</td>
-                        <td>{{ $cities[$key]->description }}</td>
-                        <td>{{ $student->course_id }}</td>
+                        <td>{{ $student->city->description }}</td>
+                        {{-- <td>{{ $cities[$key]->description }}</td> --}}
+                        {{-- <td>{{ $student->course_id }}</td> --}}
                         <td><a href="{{ route('app.student.edit', [ 'id' => $student['id'] ]) }}">Editar</a></td>
                         <td><a href="{{ route('app.student.delete', [ 'id' => $student['id'] ]) }}">Deletar</a></td>
                         

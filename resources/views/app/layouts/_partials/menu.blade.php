@@ -53,10 +53,19 @@
                         <span class="nav_name">Salas</span> 
                     </a>
                     <div class="dropdown-container">
-                    <li><a class="nav_link link-drop" href="{{ route('app.teacher.add')}}">Cadastrar</a></li>
-                        <li><a class="nav_link link-drop" href="{{ route('app.teacher.list')}}">Listar</a></li>
+                    <li><a class="nav_link link-drop" href="{{ route('app.classroom.add')}}">Cadastrar</a></li>
+                        <li><a class="nav_link link-drop" href="{{ route('app.classroom.list')}}">Listar</a></li>
                     </div>
 
+                    <a class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">
+                        <i class='bx bx-message-square-detail nav_icon'></i>
+                        <span class="nav_name">Disciplinas</span> 
+                    </a>
+                    <div class="dropdown-container">
+                    <li><a class="nav_link link-drop" href="{{ route('app.school_subject.add')}}">Cadastrar</a></li>
+                        <li><a class="nav_link link-drop" href="{{ route('app.school_subject.list')}}">Listar</a></li>
+                    </div>
+                    
                     <a class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">
                         <i class='bx bx-message-square-detail nav_icon'></i>
                         <span class="nav_name">Cursos</span> 
@@ -75,10 +84,14 @@
                         <li><a class="nav_link link-drop" href="{{ route('app.beacon.list')}}">Listar</a></li>
                     </div>
 
-                    <a href="" class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">
+                    <a class="nav_link drop-side {{$classe_candidato ?? ''}}" style="margin-top: -5%;">
                         <i class='bx bx-message-square-detail nav_icon'></i>
                         <span class="nav_name">Chamadas</span> 
                     </a>
+                    <div class="dropdown-container">
+                        <li><a class="nav_link link-drop" href="{{ route('app.school_call.add')}}">Cadastrar</a></li>
+                            <li><a class="nav_link link-drop" href="{{ route('app.school_call.list')}}">Listar</a></li>
+                        </div>
 
 
                     {{-- <a href="" class="nav_link {{ $classe_recrutador ?? ''}}"> 

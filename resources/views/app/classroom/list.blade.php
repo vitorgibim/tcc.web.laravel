@@ -15,9 +15,8 @@
         <thead>
             <tr>
                 <th width="7%">ID</th>
-                <th width="20%">Número</th>
+                <th width="7%">Número</th>
                 <th width="7%">Descrição</th>
-                <th width="10%">Professor</th>
                 <th width="7%"></th>
                 <th width="7%"></th>
             </tr>
@@ -30,7 +29,6 @@
                         <td>{{ $classroom->id }}</td>
                         <td>{{ $classroom->number }}</td>
                         <td>{{ $classroom->description ? $classroom->description: '-' }}</td>
-                        <td>{{ $classroom->number}}</td>
                         <td><a href="{{ route('app.classroom.edit', [ 'id' => $classroom['id'] ]) }}">Editar</a></td>
                         <td><a href="{{ route('app.classroom.delete', [ 'id' => $classroom['id'] ]) }}">Deletar</a></td>
                         

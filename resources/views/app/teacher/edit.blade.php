@@ -1,9 +1,9 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Aluno')
+@section('titulo', 'Professor')
 
 @php
-    $titulo = 'Editar Aluno';
+    $titulo = 'Editar Professor';
     // $classe_candidato = 'active';
     // $link1 = ['nome' => 'Cadastrar', 'rota' => 'app.candidato.cadastrar'];
     // $link2 = ['nome' => 'Procurar', 'rota' => 'app.candidato'];
@@ -16,49 +16,62 @@
       @method('PUT')
       <div class="col-md-2 input-box">
         <span class="details">Id</span>
-        <input type="text" class="form-control" name="id" value="{{$->id }}" placeholder="" readonly>
+        <input type="text" class="form-control" name="id" value="{{$teacher->id }}" placeholder="" readonly>
       </div>
       <div class="col-md-12 input-box">
         <span class="details">Nome</span>
-        <input type="text" class="form-control" name='name' value="{{ $->name; }}" placeholder="" >
-      </div>
-      <div class="col-md-4 input-box">
-        <span class="details">Registro Academico</span>
-        <input type="text" class="form-control" name='ra' value="{{ $->ra; }}" placeholder="" >
+        <input type="text" class="form-control" name='name' value="{{ $teacher->name; }}" placeholder="" >
       </div>
       <div class="col-md-4 input-box">
         <span class="details">CPF</span>
-        <input type="text" class="form-control" name='cpf' value="{{ $->cpf; }}" placeholder="" >
+        <input type="text" class="form-control" name='cpf' value="{{ $teacher->cpf; }}" placeholder="" >
       </div>
       <div class="col-md-12 input-box">
         <span class="details">Email</span>
-        <input type="e-mail" class="form-control" name='email' value="{{ $->email; }}" placeholder="" >
+        <input type="e-mail" class="form-control" name='email' value="{{ $teacher->email; }}" placeholder="" >
       </div>
       <div class="col-md-6 input-box">
         <span class="details">Endereço</span>
-        <input type="text" class="form-control" name='address' value="{{ $->address; }}" placeholder="" >
+        <input type="text" class="form-control" name='address' value="{{ $teacher->address; }}" placeholder="" >
       </div>
       <div class="col-md-4 input-box">
         <span class="details">Número do Endereço</span>
-        <input type="text" class="form-control" name='address_number' value="{{ $->address_number; }}" placeholder="" >
+        <input type="text" class="form-control" name='address_number' value="{{ $teacher->address_number; }}" placeholder="" >
       </div>
       <div class="col-md-4 input-box">
         <span class="details">Bairro</span>
-        <input type="text" class="form-control" name='neighborhood' value="{{ $->neighborhood; }}" placeholder="" >
+        <input type="text" class="form-control" name='neighborhood' value="{{ $teacher->neighborhood; }}" placeholder="" >
+      </div> 
+
+      <div class="col-md-6 mt-3">
+        <label class="call_form">Selecione a Cidade</label>
+        <select id="city" name="city_id" class="nice-select">
+            <option value={{ $teacher->city->id }} >{{ $teacher->city->description }}</option>
+            @foreach ($cities as $city)
+                <option value={{ $city->id }}>{{ $city->description }}</option>
+            @endforeach
+        </select>
       </div>
-      <div class="col-md-4 input-box">
-        <span class="details">Cidade</span>
-        <input type="text" class="form-control" name='city_id' value="{{ $->city_id; }}" placeholder="" >
-      </div>
-      <div class="col-md-4 input-box">
+
+      {{-- <div class="col-md-6 mt-3">
+        <label class="call_form">Selecione a Disciplina</label>
+        <select id="schoolSubject" name="school_subject_id" class="nice-select">
+            <option value={{ $teacher->schoolSubjects[0]->id ?? '0'}} >{{ $teacher->schoolSubjects[0]->name ?? 'Nenhuma disciplina selecionada'}}</option>
+            @foreach ($schoolSubjects as $schoolSubject)
+                <option value={{ $schoolSubject->id }}>{{ $schoolSubject->name }}</option>
+            @endforeach
+        </select>
+      </div> --}}
+
+      {{-- <div class="col-md-4 input-box">
         <span class="details">Curso</span>
-        <input type="text" class="form-control" name='uf' value="{{ $->course_id; }}" placeholder="" >
-      </div>
+        <input type="text" class="form-control" name='uf' value="{{ $teacher->course_id; }}" placeholder="" >
+      </div> --}}
     
       <div class="col-12 mt-3 justify-content-center">
         <div class="col-md-6">
           <button type="submit" class="btn btn-primary col-md-2">Salvar</button>
-          <a class="btn btn-primary col-md-2" role="button" href="{{ route('app..list')}}" aria-disabled="true">Voltar</a>
+          <a class="btn btn-primary col-md-2" role="button" href="{{ route('app.teacher.list')}}" aria-disabled="true">Voltar</a>
         </div>
       </div>
   </form>

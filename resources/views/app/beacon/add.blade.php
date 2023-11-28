@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                         <label class="call_form">Selecione o Professor</label>
                         <select id="teacher" name="teacher_id" class="nice-select">
-                            <option data-display="Select" selected disabled>Professor</option>
+                            {{-- <option data-display="Select" selected disabled>Professor</option> --}}
                             @foreach ($teachers as $teacher)
                                 <option value={{ $teacher->id }}>{{ $teacher->name }}</option>
                             @endforeach

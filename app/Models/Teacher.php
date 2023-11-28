@@ -15,7 +15,7 @@ class Teacher extends Model
         return $this->hasMany(SchoolCall::class, 'teacher_id', 'id');
     }
     public function city() {
-        return $this->belongsTo(City::class, 'id', 'city_id');
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
     public function beacon() {
         return $this->hasOne(Beacon::class, 'teacher_id', 'id');

@@ -46,14 +46,25 @@
         <span class="details">Bairro</span>
         <input type="text" class="form-control" name='neighborhood' value="{{ $student->neighborhood; }}" placeholder="" >
       </div>
-      <div class="col-md-4 input-box">
+      {{-- <div class="col-md-4 input-box">
         <span class="details">Cidade</span>
         <input type="text" class="form-control" name='city_id' value="{{ $student->city_id; }}" placeholder="" >
+      </div> --}}
+
+      <div class="col-md-6 mt-3">
+        <label class="call_form">Selecione a Cidade</label>
+        <select id="city" name="city_id" class="nice-select">
+            <option value={{ $student->city->id }} >{{ $student->city->description }}</option>
+            @foreach ($cities as $city)
+                <option value={{ $city->id }}>{{ $city->description }}</option>
+            @endforeach
+        </select>
       </div>
+{{-- 
       <div class="col-md-4 input-box">
         <span class="details">Curso</span>
         <input type="text" class="form-control" name='uf' value="{{ $student->course_id; }}" placeholder="" >
-      </div>
+      </div> --}}
     
       <div class="col-12 mt-3 justify-content-center">
         <div class="col-md-6">

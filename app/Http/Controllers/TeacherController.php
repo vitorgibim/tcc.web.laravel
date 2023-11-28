@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Models\City;
+use App\Models\Course;
+use App\Models\SchoolSubject;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -10,23 +12,25 @@ class TeacherController extends Controller
     public function list(Request $request){
         // $teachers = Teacher::paginate(15);
 
-        $teachers = Teacher::with('city','courses')->paginate(15);
-        // dd($clients);
-        // foreach ($teachers as $key => $teacher) {
-        //     $cities[$key] = City::where("id", $teachers[$key]->city_id)->first();
-        // }
+        $teachers = Teacher::with('city','schoolSubjects')->paginate(15);
 
         return view('app.teacher.list', ['teachers' => $teachers]);
     }
 
     public function edit($id){
-        $teacher = Teacher::find($id);
-        return view('app.teacher.edit', ['teacher' => $teacher]);
+        $cities = City::all();
+        $schoolSubjects = SchoolSubject::all();
+        $teacher = Teacher::with('city','schoolSubjects')->where('id', $id)->first();
+
+        return view('app.teacher.edit', compact('cities', 'teacher','schoolSubjects'));
     }
 
     public function update(Request $request){
         $attributes = $request->all();
         $teacher = Teacher::find($attributes['id']);
+        $teacher->city_id = $request->city_id; // Ver se tem como tirar
+        // $teacher->schoolSubjects->school_subject_id = $request->school_subject_id; // Ver se tem como tirar
+
         $teacher->update($attributes);
         return redirect()->route('app.teacher.list');
     }
@@ -57,5 +61,12 @@ class TeacherController extends Controller
         return redirect()->route('app.teacher.list');
 
         // return redirect('/client/search')->with('msg-success', 'Cliente cadastrado com sucesso!');;
+    }
+
+    public function addForm()
+    {
+        $cities = City::all();
+        $schoolSubjects = SchoolSubject::all();
+        return view('app.teacher.add', compact('cities', 'schoolSubjects'));
     }
 }
