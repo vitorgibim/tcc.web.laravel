@@ -79,7 +79,7 @@
             <div class="col-md-6">
                 <label class="call_form">Selecione a Sala</label>
                 <select   wire:model.live="classroom_id" id="classroom" name="classroom_id" class="nice-select">
-                    <option value="">Selecione a Disciplina</option>
+                    <option value="">Selecione a Sala</option>
                     @if (!is_null($classrooms) && (is_array($classrooms) || is_object($classrooms)))
                     @foreach ($classrooms as $classroom)
                         <option {{ old('classroom') == $classroom->id ? 'selected' : '' }} value="{{ $classroom->id }}"> {{$classroom->number }}</option>
