@@ -82,7 +82,9 @@ Route::middleware('autenticacao:padrao,visitante,p3')->prefix('/app')->group(fun
      Route::post('/school_call/add', [\App\Http\Controllers\SchoolCallController::class, 'add'])->name('app.school_call.add');
      Route::get('/school_call/add', [\App\Http\Controllers\SchoolCallController::class, 'addForm'])->name('app.school_call.add');
 
-    //School_call
+     
+
+    //School_subject
     Route::get('/school_subject/list', [\App\Http\Controllers\SchoolSubjectController::class, 'list'])->name('app.school_subject.list');
     Route::get('/school_subject/edit/{id}', [\App\Http\Controllers\SchoolSubjectController::class, 'edit'])->name('app.school_subject.edit');
     Route::put('/school_subject/update', [\App\Http\Controllers\SchoolSubjectController::class, 'update'])->name('app.school_subject.update');

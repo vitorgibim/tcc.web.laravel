@@ -10,7 +10,10 @@
 @endphp
     
 @section('conteudo')
-<div style="width: 95%; margin-left: 2%; margin-top: 7%; margin-right: 2%">
+@livewire('school-call-edit',['id' => $id])
+
+
+{{-- <div style="width: 95%; margin-left: 2%; margin-top: 7%; margin-right: 2%">
     <form class="row g-3" action="{{ route('app.school_call.update')}}" method="POST">
       @csrf
       @method('PUT')
@@ -59,17 +62,7 @@
             @endforeach
         </select>
       </div>  
-{{-- 
-      <div class="col-md-6 mt-3">
-        <label class="call_form">Selecione o Aluno</label>
-        <select id="student" name="student_id" class="nice-select">
-            <option value={{ $school_call->student[0]->id }} >{{ $school_call->student[0]->name }}</option>
-            @foreach ($students as $student)
-                <option value={{ $student->id }}>{{ $student->name }}</option>
-            @endforeach
-        </select>
-      </div> --}}
-    
+
       <div class="col-12 mt-3 justify-content-center">
         <div class="col-md-6">
           <button type="submit" class="btn btn-primary col-md-2">Salvar</button>
@@ -79,6 +72,6 @@
   </form>
 
 
-</div>
+</div> --}}
 
 @endsection

@@ -10,7 +10,10 @@
 @endphp
     
 @section('conteudo')
-        <div class="informacao-pagina" style="margin-top: 7%">
+    {{-- @livewire('school-call-livewire') --}}
+    @livewire('school-call-create')
+
+        {{-- <div class="informacao-pagina" style="margin-top: 7%">
             <div class="row g-3 needs-validation justify-content-center mt-5" style="width: 75%; margin-left: 10%;">
                 <form class="row g-3" method="post" action="{{route('app.school_call.add')}}" >
                     @csrf
@@ -58,5 +61,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
