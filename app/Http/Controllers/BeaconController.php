@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Beacon;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class BeaconController extends Controller
 {
@@ -27,36 +28,34 @@ class BeaconController extends Controller
         $beacon = Beacon::find($attributes['id']);
         $beacon->teacher_id = $request->teacher_id; // Ver se tem como tirar
         $beacon->update($attributes);
+        session()->flash('message', 'Beacon atualizado com sucesso.');
         return redirect()->route('app.beacon.list');
     }
 
     public function delete($id)
     {
         Beacon::findOrFail($id)->delete();
+        session()->flash('message', 'Beacon deletado com sucesso.');
         return redirect()->route('app.beacon.list');
-
-        // return redirect('/client/search')//->with('msg-danger', 'Cliente deletado com sucesso'); // Retorna pra tela anterior atualizando os registros
-
     }
 
     public function add(Request $request)
     {
-        
-        $beacon = new Beacon;
 
+        $beacon = new Beacon;
         $beacon->UUID = $request->UUID;
         $beacon->description = $request->description;
         $beacon->teacher_id = $request->teacher_id;
         $beacon->save();
+        session()->flash('message', 'Beacon adicionado com sucesso.');
 
         return redirect()->route('app.beacon.list');
-
-        // return redirect('/client/search')->with('msg-success', 'Cliente cadastrado com sucesso!');;
     }
 
     public function addForm()
     {
         $teachers = Teacher::all();
-        return view('app.beacon.add', compact('teachers'));
+        $UUID = Uuid::uuid4()->toString();
+        return view('app.beacon.add', compact('teachers', 'UUID'));
     }
     }

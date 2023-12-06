@@ -11,6 +11,13 @@
     
 @section('conteudo')
 <div style="width: 95%; margin-left: 2%; margin-top: 7%; margin-right: 2%">
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>

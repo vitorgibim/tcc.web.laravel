@@ -16,7 +16,7 @@
                     @csrf
                     <div class="col-md-12">
                         <label for="validationCustom01"  class="form-label">UUID</label>
-                        <input type="text" name="UUID" value="{{ old('UUID') }}" class="form-control" id="validationCustom01" required>
+                        <input type="text" name="UUID" value="{{ old('UUID') ? old('UUID') :  $UUID }}" class="form-control" id="validationCustom01" required>
                         {{ $errors->has('UUID') ? $errors->first('UUID') : ''}}
                     </div>
                     <div class="col-md-6">
