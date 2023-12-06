@@ -20,3 +20,5 @@ yarn-error.log
 Dockerfile
 docker-compose.yml
 todo.md
+laradock/*
+laradock
