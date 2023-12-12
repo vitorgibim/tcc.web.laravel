@@ -9,7 +9,6 @@ class StudentController extends Controller
 {
     public function list(Request $request){
         $students = Student::paginate(15);
-        // with('city')
 
         foreach ($students as $key => $student) {
             $cities[$key] = City::where("id", $students[$key]->city_id)->first();
@@ -28,8 +27,7 @@ class StudentController extends Controller
     public function update(Request $request){
         $attributes = $request->all();
         $student = Student::find($attributes['id']);
-        $student->city_id = $request->city_id; // Ver se tem como tirar
-
+        $student->city_id = $request->city_id; 
         $student->update($attributes);
         return redirect()->route('app.student.list');
     }
@@ -38,8 +36,6 @@ class StudentController extends Controller
     {
         Student::findOrFail($id)->delete();
         return redirect()->route('app.student.list');
-
-        // return redirect('/client/search')//->with('msg-danger', 'Cliente deletado com sucesso'); // Retorna pra tela anterior atualizando os registros
 
     }
 

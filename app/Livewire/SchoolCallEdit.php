@@ -15,24 +15,11 @@ class SchoolCallEdit extends Component
     public $id;
     public $name, $date, $teacher_id,$classroom_id, $school_subject_id, $status,$school_call, $student_school_call;
     public $teachers, $classrooms, $school_subjects, $students;
-    public $student_id = [], $student_id_has = [];
-
-    // protected $rules = [
-    //     // 'date' => 'required|date',
-    //     // 'teacher_id' => 'required',
-    //     // 'classroom_id' => 'required',
-    //     // 'school_subject_id' => 'required',
-    //     // 'status' => 'required'
-    // ];
+    public $student_id=[], $student_id_has=[];
 
     public function mount($id){
         $this->id = $id;
     }
-
-    // public function updated($propertyName) //on the fly validation
-    // {
-    //     $this->validateOnly($propertyName);
-    // }
 
     public function render()
     {
@@ -67,7 +54,6 @@ class SchoolCallEdit extends Component
         $school_call->school_subject_id = $this->school_subject_id;
         $school_call->classroom_id = $this->classroom_id;
         $school_call->update($attributes);
-
         $arrayStudents = $school_call->students->pluck('id')->toArray();
         $result = array_merge($arrayStudents, $this->student_id);
 
