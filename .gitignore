@@ -21,4 +21,4 @@ Dockerfile
 docker-compose.yml
 todo.md
 laradock/*
-laradock
+laradock/
