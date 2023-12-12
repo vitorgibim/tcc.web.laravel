@@ -15,7 +15,7 @@ class SchoolCallEdit extends Component
     public $id;
     public $name, $date, $teacher_id,$classroom_id, $school_subject_id, $status,$school_call, $student_school_call;
     public $teachers, $classrooms, $school_subjects, $students;
-    public $student_id, $student_id_has = [];
+    public $student_id=[], $student_id_has=[];
 
     public function mount($id){
         $this->id = $id;
