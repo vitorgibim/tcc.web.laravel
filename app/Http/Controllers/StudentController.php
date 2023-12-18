@@ -5,16 +5,20 @@ use App\Models\Student;
 use App\Models\City;
 use Illuminate\Http\Request;
 
+
 class StudentController extends Controller
 {
     public function list(Request $request){
-        $students = Student::paginate(15);
+        try{
+            $students = Student::paginate(15);
+            foreach ($students as $key => $student) {
+                $cities[$key] = City::where("id", $students[$key]->city_id)->first();
+            }
+            return view('app.student.list', ['students' => $students, 'cities' => $cities]);
 
-        foreach ($students as $key => $student) {
-            $cities[$key] = City::where("id", $students[$key]->city_id)->first();
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
         }
-
-        return view('app.student.list', ['students' => $students, 'cities' => $cities]);
     }
 
     public function edit($id){

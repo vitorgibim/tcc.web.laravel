@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address_number', 10)->nullable();
             $table->string('neighborhood', 50)->nullable();
             $table->foreignId('city_id')->constrained();
-            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             // $table->unsignedBigInteger('city_id'); //FK
             // $table->unsignedBigInteger('course_id'); //FK
