@@ -76,4 +76,10 @@ class SchoolCallEdit extends Component
     public function addStudentSchoolCall(){
         $this->student_school_call++;
     }
+
+    public function removeStudent($id){
+        $arrayStudents = $school_call->students->pluck('id')->toArray();
+
+        dd($arrayStudents);
+    }
 }

@@ -8,11 +8,17 @@ use Illuminate\Http\Request;
 class ClassroomController extends Controller
 {
     public function list(Request $request){
-        $classrooms = Classroom::paginate(15);
-        // $classrooms = Classroom::with('teacher')->paginate(15);
-        // $classrooms = Classroom::with('city','courses')->paginate(15);
-        // dd($classrooms);
-        return view('app.classroom.list', ['classrooms' => $classrooms]);
+
+        try{
+            $classrooms = Classroom::paginate(15);
+            // $classrooms = Classroom::with('teacher')->paginate(15);
+            // $classrooms = Classroom::with('city','courses')->paginate(15);
+            // dd($classrooms);
+            return view('app.classroom.list', ['classrooms' => $classrooms]);
+
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
     }
 
     public function edit($id){

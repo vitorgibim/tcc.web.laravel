@@ -9,10 +9,14 @@ use Ramsey\Uuid\Uuid;
 class BeaconController extends Controller
 {
     public function list(Request $request){
-        $beacons = Beacon::with('teacher')->paginate(15);
-        // $beacons = Beacon::with('city','courses')->paginate(15);
-
-        return view('app.beacon.list', ['beacons' => $beacons]);
+        try{
+            $beacons = Beacon::with('teacher')->paginate(15);
+            // $beacons = Beacon::with('city','courses')->paginate(15);
+    
+            return view('app.beacon.list', ['beacons' => $beacons]);
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
     }
 
     public function edit($id){

@@ -8,10 +8,15 @@ use Illuminate\Http\Request;
 class SchoolSubjectController extends Controller
 {
     public function list(Request $request){
-        $school_subjects = SchoolSubject::paginate(15);
-        // $school_subjects = SchoolSubject::with('city','school_subjects')->paginate(15);
+        try{
 
-        return view('app.school_subject.list', ['school_subjects' => $school_subjects]);
+            $school_subjects = SchoolSubject::paginate(15);
+            // $school_subjects = SchoolSubject::with('city','school_subjects')->paginate(15);
+    
+            return view('app.school_subject.list', ['school_subjects' => $school_subjects]);
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
     }
 
     public function edit($id){

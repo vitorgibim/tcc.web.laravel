@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function list(Request $request){
-        $courses = Course::paginate(15);
-        // $courses = Course::with('city','courses')->paginate(15);
-
-        return view('app.course.list', ['courses' => $courses]);
+        try{
+            
+            $courses = Course::paginate(15);
+            // $courses = Course::with('city','courses')->paginate(15);
+    
+            return view('app.course.list', ['courses' => $courses]);
+    
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
     }
 
     public function edit($id){

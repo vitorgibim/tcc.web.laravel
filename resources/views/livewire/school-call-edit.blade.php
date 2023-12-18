@@ -90,16 +90,32 @@
             @if ($school_call)
                 
             @if ($school_call->students)
-                @foreach ($school_call->students as $student)
-                    <div class="col-md-6">
-                        <label for="validationCustom05">Aluno - {{ $loop->index+1 }}</label>
+            <div class="col-md-6">
+                
+                <ul>
+                            @foreach ($school_call->students as $student)
+                            <li style="list-style-type: none">
+                                {{-- <button wire:click="removeStudent({{ $student->name }})">
+                                  Remover
+                                </button> --}}
+                                {{ $student->name }}
+                              </li> 
+
+                            {{-- <button wire:click="removeStudent({{ $student }})" wire:without-refresh>
+                            Remover  
+                            </button> --}}
+                            {{-- <li wire:model = "student_id_has.{{$student->id}}">{{$student->name }}</li>  --}}
+                            @endforeach
+                          </ul>
+
+                        {{-- <label for="validationCustom05">Aluno - {{ $loop->index+1 }}</label>
                         <select   wire:model="student_id_has.{{$student->id}}" id="student_id{{$student->id}}" name="student_id{{$student->id}}" class="nice-select">
                             <option value="{{ $student->id }}"> {{$student->name }}</option>
                             <option >Remover o Aluno</option>
                                
-                        </select>
+                        </select> --}}
                     </div>
-                @endforeach
+                {{-- @endforeach --}}
             @endif
             @endif
             <br>

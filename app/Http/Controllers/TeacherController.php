@@ -11,10 +11,14 @@ class TeacherController extends Controller
 {
     public function list(Request $request){
         // $teachers = Teacher::paginate(15);
+        try{
 
-        $teachers = Teacher::with('city','schoolSubjects')->paginate(15);
-
-        return view('app.teacher.list', ['teachers' => $teachers]);
+            $teachers = Teacher::with('city','schoolSubjects')->paginate(15);
+            return view('app.teacher.list', ['teachers' => $teachers]);
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
+        
     }
 
     public function edit($id){

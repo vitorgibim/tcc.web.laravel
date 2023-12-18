@@ -12,8 +12,13 @@ use Illuminate\Http\Request;
 class SchoolCallController extends Controller
 {
     public function list(){
-        $school_calls = SchoolCall::with('teacher','classroom','schoolSubject','students')->paginate(15);
-        return view('app.school_call.list', ['school_calls' => $school_calls]);
+        try{
+            $school_calls = SchoolCall::with('teacher','classroom','schoolSubject','students')->paginate(15);
+            return view('app.school_call.list', ['school_calls' => $school_calls]);
+
+        }catch(\Exception $e){
+            return redirect()->route('app.home');
+        }
     }
 
     public function edit($id){
